@@ -234,16 +234,12 @@ main {
     text-align: center;
 }
 
-.banner .email {
+.email {
     height: 3rem;
     max-width: 25rem;
     border-radius: 2rem;
     overflow: hidden;
     display: flex;
-}
-
-.email>* {
-    height: 100%;
 }
 
 .email input {
@@ -257,8 +253,7 @@ main {
 }
 
 .email button {
-    flex: 30%;
-    flex-shrink: 0;
+    flex: 40%;
     cursor: pointer;
     border: none;
     margin-left: -5px;
