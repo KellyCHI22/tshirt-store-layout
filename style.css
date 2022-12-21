@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+/* 切版時間紀錄 */
+/* hour 1: html 完成、大致排版完成 */
+/* hour 2: nav、選項和 banner 細修完成，現在才發現沒有 mobile first!? */
+/* hour 3: 把桌機版移到 media query 裡面，並修改手機版設定 @@ */
+/* hour 4: 完成圖片hover效果、調整navbar、其他微調*/
+/* CSS reset */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+ul,
+li {
+    padding: 0;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* general stylings */
+
+body {
+    width: 100%;
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+.container {
+    width: 95%;
+    margin: 0 auto;
+}
+
+/* separate stylings */
+
+/* nav */
+.nav {
+    height: 3rem;
+    width: 100%;
+    padding: 0 1rem;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    background-color: rgba(255 255 255/.75);
+}
+
+.nav__logo {
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.nav__logo img {
+    height: 100%;
+}
+
+.nav__items {
+    display: none;
+}
+
+.nav__items .nav__link {
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
+
+.nav__tools {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+}
+
+.nav__tools .search {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+}
+
+/* main */
+main {
+    padding-top: 3rem;
+}
+
+.products__option {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+.options select {
+    width: 9rem;
+    padding: .5rem;
+    background-color: white;
+    border: 1px solid rgba(0 0 0/.35);
+    border-radius: .25rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+}
+
+/* products */
+.products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.product {
+    position: relative;
+}
+
+.add-to-fav {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 2rem;
+    height: 2rem;
+    display: grid;
+    place-items: center;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.product__images {
+    position: relative;
+    overflow: hidden;
+}
+
+.product__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 200ms ease-in;
+}
+
+.product:hover .product__img {
+    opacity: 1;
+}
+
+.product__desc {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.product__price {
+    font-weight: 700;
+}
+
+.sold-out {
+    font-weight: 400;
+}
+
+.sold-out span {
+    text-decoration: line-through;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+}
+
+/* banner */
+.banner {
+    padding: 2rem 1rem;
+    background-image: url(./images/banner-_bg.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.banner .email {
+    height: 3rem;
+    max-width: 25rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    display: flex;
+}
+
+.email>* {
+    height: 100%;
+}
+
+.email input {
+    border: none;
+    padding: 1rem;
+    text-align: center;
+}
+
+.email input:focus {
+    outline: none;
+}
+
+.email button {
+    flex: 30%;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: none;
+    margin-left: -5px;
+    padding: 1rem;
+    padding-right: 1.5rem;
+    background-color: black;
+    color: white;
+}
+
+.email button:hover {
+    opacity: .8;
+}
+
+.banner .policy {
+    font-size: .9rem;
+    opacity: .75;
+}
+
+.banner .policy a {
+    text-decoration: underline;
+}
+
+/* footer */
+footer {
+    padding: .5rem 0;
+    text-align: center;
+    background-image: url(./images/banner-_bg.png);
+}
+
+/* media queries */
+@media (min-width: 600px) {
+
+    .nav {
+        height: 3.5rem;
+    }
+
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .email input {
+        width: 35ch;
+    }
+}
+
+
+@media (min-width: 960px) {
+
+    .nav {
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        padding: 0 2rem;
+    }
+
+    .nav__logo {
+        position: relative;
+        grid-column: 1 / 4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav__items {
+        grid-column: 5 / 9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .nav__tools {
+        grid-column: 11 / 13;
+    }
+
+    .nav__tools .search {
+        position: unset;
+    }
+
+    /* main */
+
+    .options select {
+        width: 12rem;
+    }
+
+    .products {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+
+    /* banner */
+    .banner {
+        padding: 3rem 0;
+        margin: 0 5rem;
+    }
+}
